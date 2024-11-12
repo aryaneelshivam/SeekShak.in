@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SeekShak.in - Teacher Job Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="text-xl font-bold">SeekShak.in</div>
+          <div class="space-x-6">
+            <a href="#" class="hover:text-blue-200">For Teachers</a>
+            <a href="#" class="hover:text-blue-200">For Schools</a>
+            <a href="listings.html" class="hover:text-blue-200">Search Teachers</a>
+
+            <a
+              href="#"
+              class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50"
+              >Sign In</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-white">
+      <div class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-4xl font-bold text-gray-800 mb-6">
+              Connect with Your Dream Teaching Opportunity
+            </h1>
+            <p class="text-gray-600 mb-8">
+              Join thousands of educators and schools in finding the perfect
+              match for your teaching career.
+            </p>
+            <div class="space-x-4">
+              <button
+                class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+              >
+                Create Teacher Profile
+              </button>
+              <button
+                class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50"
+              >
+                Post School Vacancy
+              </button>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <img
+              src="https://opendoodles.s3-us-west-1.amazonaws.com/clumsy.png"
+              alt="Teachers in classroom"
+              height="500px"
+              width="500px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trusted by Section -->
+    <section class="bg-white border py-12">
+      <div class="max-w-7xl mx-auto text-center mb-8">
+        <h2 class="text-3xl font-semibold text-gray-800">
+          Trusted by Partners Worldwide 🌎
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Join the trusted network of educators and professionals
+        </p>
+      </div>
+
+      <!-- Sliding Logos Container -->
+      <div class="overflow-hidden relative py-4">
+        <div class="flex space-x-20 animate-slide">
+          <!-- Company Logos (Replace src with actual logo image paths) -->
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/Indeed_iduIR7_80I_1.png?v=1731219338637"
+            alt="Company 1"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/LinkedIn_idrcetuhHI_1.png?v=1731219594459"
+            alt="Company 2"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/Workday_idAUTndIA5_1.png?v=1731219588616"
+            alt="Company 3"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/Washington%20Post_Logo_2.webp?v=1731219583683"
+            alt="Company 1"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/Indeed_iduIR7_80I_1.png?v=1731219338637"
+            alt="Company 1"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/LinkedIn_idrcetuhHI_1.png?v=1731219594459"
+            alt="Company 2"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/Workday_idAUTndIA5_1.png?v=1731219588616"
+            alt="Company 3"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+          <img
+            src="https://cdn.glitch.global/05d4dcc1-ce15-43e7-bae0-c0b04269c65e/PayPal_Logo_Alternative_1.png?v=1731219574674"
+            alt="Company 1"
+            class="w-44 h-24 object-contain opacity-100 hover:opacity-100 transition duration-100"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Tailwind + Custom CSS for sliding effect -->
+    <style>
+      /* Sliding animation for logos */
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Applies sliding animation to the logo row */
+      .animate-slide {
+        display: flex;
+        animation: slide 10s linear infinite;
+      }
+    </style>
+
+    <!-- Recent Listings -->
+    <div class="bg-white py-16">
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-3xl font-bold text-gray-800">Recent Job Listings</h2>
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search jobs..."
+                class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
+              />
+              <svg
+                class="w-5 h-5 absolute left-3 top-3 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewbox="0 0 24 24"
+              >
+                <path
+                  strokelinecap="round"
+                  strokelinejoin="round"
+                  strokewidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            <a href="joblistings.html">
+            <button
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2"
+            >
+              <span>Search Jobs</span>
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewbox="0 0 24 24"
+              >
+                <path
+                  strokelinecap="round"
+                  strokelinejoin="round"
+                  strokewidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Job Card 1 -->
+          <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="font-bold text-lg">Math Teacher</h3>
+                <p class="text-gray-600">Springfield Elementary</p>
+              </div>
+              <span
+                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                >Full-time</span
+              >
+            </div>
+            <p class="text-gray-600 mb-4">
+              Seeking experienced math teacher for grades 6-8. Strong classroom
+              management skills required.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-500">Springfield, IL</span>
+              <button class="text-blue-600 hover:text-blue-700">
+                View Details →
+              </button>
+            </div>
+          </div>
+          <!-- Job Card 2 -->
+          <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="font-bold text-lg">Science Teacher</h3>
+                <p class="text-gray-600">Riverside High School</p>
+              </div>
+              <span
+                class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm"
+                >Part-time</span
+              >
+            </div>
+            <p class="text-gray-600 mb-4">
+              Looking for a dynamic science teacher with lab experience. Biology
+              focus preferred.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-500">Portland, OR</span>
+              <button class="text-blue-600 hover:text-blue-700">
+                View Details →
+              </button>
+            </div>
+          </div>
+          <!-- Job Card 3 -->
+          <div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="font-bold text-lg">English Teacher</h3>
+                <p class="text-gray-600">Bay Area Academy</p>
+              </div>
+              <span
+                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                >Full-time</span
+              >
+            </div>
+            <p class="text-gray-600 mb-4">
+              English teacher needed for high school level. Experience with AP
+              curriculum a plus.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-500">San Francisco, CA</span>
+              <button class="text-blue-600 hover:text-blue-700">
+                View Details →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teacher Listings Section -->
+    <div class="bg-white py-16">
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-3xl font-bold text-gray-800">Featured Educators</h2>
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Search educators..."
+              class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
+            />
+            <svg
+              class="w-5 h-5 absolute left-3 top-3 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Teacher Profile Card 1 -->
+          <div
+            class="bg-white border rounded-lg p-6 hover:shadow-lg transition-shadow"
+          >
+            <div class="flex items-start space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="44"
+                height="44"
+                fill="currentColor"
+                class="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                />
+              </svg>
+              <div>
+                <h3 class="font-bold text-lg">Sarah Johnson, M.Ed</h3>
+                <p class="text-blue-600">Mathematics Specialist</p>
+                <div class="flex space-x-2 mt-2">
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                    >AP Calculus</span
+                  >
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                    >IB Math</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <p class="text-gray-600">
+                10+ years experience teaching advanced mathematics. Specializes
+                in making complex concepts accessible.
+              </p>
+              <div class="mt-4 flex justify-between items-center">
+                <span class="text-gray-500">Boston, MA</span>
+                <button class="text-blue-600 hover:text-blue-700 font-medium">
+                  View Profile →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teacher Profile Card 2 -->
+          <div
+            class="bg-white border rounded-lg p-6 hover:shadow-lg transition-shadow"
+          >
+            <div class="flex items-start space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="44"
+                height="44"
+                fill="currentColor"
+                class="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                />
+              </svg>
+              <div>
+                <h3 class="font-bold text-lg">David Chen, Ph.D</h3>
+                <p class="text-blue-600">Science Educator</p>
+                <div class="flex space-x-2 mt-2">
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                    >Physics</span
+                  >
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                    >Chemistry</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <p class="text-gray-600">
+                Research scientist turned educator. Passionate about hands-on
+                learning and STEM education.
+              </p>
+              <div class="mt-4 flex justify-between items-center">
+                <span class="text-gray-500">Seattle, WA</span>
+                <button class="text-blue-600 hover:text-blue-700 font-medium">
+                  View Profile →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teacher Profile Card 3 -->
+          <div
+            class="bg-white border rounded-lg p-6 hover:shadow-lg transition-shadow"
+          >
+            <div class="flex items-start space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="44"
+                height="44"
+                fill="currentColor"
+                class="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                />
+              </svg>
+              <div>
+                <h3 class="font-bold text-lg">Maria Garcia</h3>
+                <p class="text-blue-600">Language Arts</p>
+                <div class="flex space-x-2 mt-2">
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                    >ESL</span
+                  >
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                    >Spanish</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <p class="text-gray-600">
+                Bilingual educator specializing in ESL and Spanish language
+                instruction. Cultural exchange advocate.
+              </p>
+              <div class="mt-4 flex justify-between items-center">
+                <span class="text-gray-500">Austin, TX</span>
+                <button class="text-blue-600 hover:text-blue-700 font-medium">
+                  View Profile →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- View All Teachers Button -->
+        <div class="text-center mt-8">
+          <button
+            class="bg-white border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 font-medium"
+          >
+            View All Educators
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <section class="bg-white py-12">
+      <div class="max-w-7xl mx-auto text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">
+          Choose Your Plan 🏆
+        </h2>
+        <p class="text-gray-600 text-lg">
+          Get started with the plan that fits your needs.
+        </p>
+      </div>
+      <div class="flex flex-col lg:flex-row justify-center gap-8 px-4 lg:px-0">
+        <!-- Free Plan -->
+        <div
+          class="bg-white border rounded-lg shadow-lg p-8 w-full lg:w-1/3 transform hover:scale-105 transition-transform"
+        >
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Free 🚀</h3>
+          <p class="text-gray-600 mb-6">Basic teacher profile creation</p>
+          <div class="text-4xl font-extrabold text-gray-800 mb-4">
+            $0<span class="text-xl text-gray-500">/month</span>
+          </div>
+          <ul class="text-gray-600 mb-8 space-y-3">
+            <li>📝 Basic profile setup</li>
+            <li>🌐 Accessible to all users</li>
+            <li>🔍 Limited visibility</li>
+          </ul>
+          <button
+            class="w-full py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition duration-300 ease-in-out"
+          >
+            Get Started
+          </button>
+        </div>
+
+        <!-- Premium Plan -->
+        <div
+          class="bg-white rounded-lg shadow-lg p-8 w-full lg:w-1/3 border-2 border-blue-500 transform hover:scale-105 transition-transform"
+        >
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Premium ⭐</h3>
+          <p class="text-gray-600 mb-6">Trusted teacher profile creation</p>
+          <div class="text-4xl font-extrabold text-gray-800 mb-4">
+            $29<span class="text-xl text-gray-500">/month</span>
+          </div>
+          <ul class="text-gray-600 mb-8 space-y-3">
+            <li>✅ Full profile setup</li>
+            <li>🌟 Featured as trusted teacher</li>
+            <li>👀 Increased visibility</li>
+            <li>📞 Priority support</li>
+          </ul>
+          <button
+            class="w-full py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition duration-300 ease-in-out"
+          >
+            Upgrade Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <div class="bg-white border py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+          How It Works
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- For Teachers -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-blue-600 text-4xl mb-4">👩‍🏫</div>
+            <h3 class="text-xl font-bold mb-4">For Teachers</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li>Create your professional profile</li>
+              <li>Showcase your experience</li>
+              <li>Apply to open positions</li>
+              <li>Get noticed by top schools</li>
+            </ul>
+          </div>
+          <!-- For Schools -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-blue-600 text-4xl mb-4">🏫</div>
+            <h3 class="text-xl font-bold mb-4">For Schools</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li>Post job openings</li>
+              <li>Browse teacher profiles</li>
+              <li>Direct messaging system</li>
+              <li>Track applications</li>
+            </ul>
+          </div>
+          <!-- Success Stories -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-blue-600 text-4xl mb-4">🌟</div>
+            <h3 class="text-xl font-bold mb-4">Success Stories</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li>1000+ successful placements</li>
+              <li>95% satisfaction rate</li>
+              <li>Nationwide coverage</li>
+              <li>Verified profiles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-12">
+      <div class="max-w-7xl mx-auto text-center mb-8">
+        <h2 class="text-3xl font-semibold text-gray-800">
+          Frequently Asked Questions ❓
+        </h2>
+        <p class="text-gray-600 mt-2">Find answers to common questions below</p>
+      </div>
+
+      <!-- FAQ Items -->
+      <div class="max-w-4xl mx-auto space-y-4">
+        <!-- FAQ Item 1 -->
+        <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
+          <button
+            @click="open = !open"
+            class="flex items-center justify-between w-full text-left text-gray-800 font-medium text-lg"
+          >
+            <span>What is included in the free tier? 🌐</span>
+            <svg
+              :class="{ 'rotate-180': open }"
+              class="w-5 h-5 text-gray-500 transform transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <div x-show="open" class="mt-2 text-gray-600" x-cloak>
+            Our free tier includes basic teacher profile creation, which allows
+            you to showcase essential qualifications and connect with students.
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
+          <button
+            @click="open = !open"
+            class="flex items-center justify-between w-full text-left text-gray-800 font-medium text-lg"
+          >
+            <span>How do I upgrade to the premium plan? 💳</span>
+            <svg
+              :class="{ 'rotate-180': open }"
+              class="w-5 h-5 text-gray-500 transform transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <div x-show="open" class="mt-2 text-gray-600" x-cloak>
+            To upgrade to our premium plan, go to your account settings and
+            select the "Upgrade" option. Follow the prompts to complete your
+            payment and enjoy enhanced features.
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
+          <button
+            @click="open = !open"
+            class="flex items-center justify-between w-full text-left text-gray-800 font-medium text-lg"
+          >
+            <span>Can I switch back to the free tier anytime? 🔄</span>
+            <svg
+              :class="{ 'rotate-180': open }"
+              class="w-5 h-5 text-gray-500 transform transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <div x-show="open" class="mt-2 text-gray-600" x-cloak>
+            Yes, you can downgrade to the free tier at any time. Simply go to
+            your account settings and select "Downgrade" to switch back.
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div x-data="{ open: false }" class="border-b border-gray-200 pb-4">
+          <button
+            @click="open = !open"
+            class="flex items-center justify-between w-full text-left text-gray-800 font-medium text-lg"
+          >
+            <span>What is the refund policy? 💸</span>
+            <svg
+              :class="{ 'rotate-180': open }"
+              class="w-5 h-5 text-gray-500 transform transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <div x-show="open" class="mt-2 text-gray-600" x-cloak>
+            We offer a full refund if you cancel your subscription within 14
+            days of purchase. After that, refunds are evaluated on a
+            case-by-case basis.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AlpineJS for FAQ toggle functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+      <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h4 class="text-lg font-bold mb-4">SeekShak.in</h4>
+            <p class="text-gray-400">
+              Connecting great teachers with great schools.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">For Teachers</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white">Create Profile</a></li>
+              <li><a href="#" class="hover:text-white">Search Jobs</a></li>
+              <li><a href="#" class="hover:text-white">Resources</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">For Schools</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white">Post a Job</a></li>
+              <li><a href="#" class="hover:text-white">Search Teachers</a></li>
+              <li><a href="#" class="hover:text-white">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Contact</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>support@seekshak.in</li>
+              <li>1-800-EDU-CONN</li>
+              <li>Mon-Fri 9AM-5PM EST</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Profiles</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="text-xl font-bold">SeekShak.in</div>
+          <div class="space-x-6">
+            <a href="#" class="hover:text-blue-200">For Teachers</a>
+            <a href="#" class="hover:text-blue-200">For Schools</a>
+            <a
+              href="#"
+              class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50"
+              >Sign In</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      x-data="{
+        teachers: [
+            {
+                name: 'Dr. Sarah Johnson',
+                subject: 'Mathematics',
+                experience: '12 years',
+                education: 'Ph.D. in Mathematics',
+                specialization: 'Advanced Calculus',
+                rating: 4.8,
+                students: 450,
+                location: 'Mumbai, Maharashtra',
+                image: '/api/placeholder/150/150'
+            },
+            {
+                name: 'Prof. Michael Chen',
+                subject: 'Physics',
+                experience: '15 years',
+                education: 'Ph.D. in Physics',
+                specialization: 'Quantum Mechanics',
+                rating: 4.9,
+                students: 380,
+                location: 'Delhi, Delhi',
+                image: '/api/placeholder/150/150'
+            },
+            {
+                name: 'Dr. Emily Williams',
+                subject: 'Chemistry',
+                experience: '8 years',
+                education: 'Ph.D. in Chemistry',
+                specialization: 'Organic Chemistry',
+                rating: 4.7,
+                students: 320,
+                location: 'Bangalore, Karnataka',
+                image: '/api/placeholder/150/150'
+            }
+            ,
+            {
+                name: 'Prof. Lisa Martinez',
+                subject: 'Mathematics',
+                experience: '10 years',
+                education: 'Ph.D. in Mathematics Education',
+                specialization: 'Algebra and Number Theory',
+                rating: 4.8,
+                students: 290,
+                location: 'Chennai, Tamil Nadu',
+                image: '/api/placeholder/150/150'
+            }
+            ,
+            {
+                name: 'Dr. James Wilson',
+                subject: 'Physics',
+                experience: '14 years',
+                education: 'Ph.D. in Theoretical Physics',
+                specialization: 'Particle Physics',
+                rating: 4.9,
+                students: 410,
+                location: 'Hyderabad, Telangana',
+                image: '/api/placeholder/150/150'
+            },
+            {
+                name: 'Prof. Maria Garcia',
+                subject: 'Chemistry',
+                experience: '11 years', 
+                education: 'Ph.D. in Physical Chemistry',
+                specialization: 'Analytical Chemistry',
+                rating: 4.7,
+                students: 340,
+                location: 'Pune, Maharashtra',
+                image: '/api/placeholder/150/150'
+            },
+            {
+                name: 'Dr. Robert Taylor',
+                subject: 'Mathematics',
+                experience: '16 years',
+                education: 'Ph.D. in Applied Mathematics',
+                specialization: 'Statistics and Data Analysis',
+                rating: 4.8,
+                students: 470,
+                location: 'Kolkata, West Bengal',
+                image: '/api/placeholder/150/150'
+            },
+            {
+                name: 'Prof. Amanda Lee',
+                subject: 'Chemistry',
+                experience: '9 years',
+                education: 'Ph.D. in Biochemistry',
+                specialization: 'Inorganic Chemistry',
+                rating: 4.6,
+                students: 280,
+                location: 'Ahmedabad, Gujarat',
+                image: '/api/placeholder/150/150'
+            },
+            {
+                name: 'Dr. David Brown',
+                subject: 'Physics',
+                experience: '13 years',
+                education: 'Ph.D. in Astrophysics',
+                specialization: 'Classical Mechanics',
+                rating: 4.8,
+                students: 390,
+                location: 'Jaipur, Rajasthan',
+                image: '/api/placeholder/150/150'
+            },
+            {
+                name: 'Prof. Rachel Kim',
+                subject: 'Mathematics',
+                experience: '10 years',
+                education: 'Ph.D. in Pure Mathematics',
+                specialization: 'Linear Algebra',
+                rating: 4.7,
+                students: 320,
+                location: 'Lucknow, Uttar Pradesh',
+                image: '/api/placeholder/150/150'
+            }
+        ],
+        searchQuery: '',
+        selectedSubject: 'all',
+        filteredTeachers() {
+            return this.teachers.filter(teacher => {
+                const matchesSearch = teacher.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                                    teacher.subject.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                                    teacher.location.toLowerCase().includes(this.searchQuery.toLowerCase());
+                const matchesSubject = this.selectedSubject === 'all' || teacher.subject === this.selectedSubject;
+                return matchesSearch && matchesSubject;
+            });
+        }
+    }"
+      class="container mx-auto px-4 py-8"
+    >
+      <!-- Header -->
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Our Teachers</h1>
+
+        <!-- Search and Filter Section -->
+        <div class="flex flex-col md:flex-row gap-4 mb-6">
+          <!-- Search Box -->
+          <div class="flex-1">
+            <input
+              type="text"
+              x-model="searchQuery"
+              placeholder="Search teachers..."
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <!-- Filter Dropdown -->
+          <select
+            x-model="selectedSubject"
+            class="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700 font-medium cursor-pointer hover:border-blue-400 transition-colors duration-200 min-w-[160px]"
+          >
+            <option value="all" class="py-1">All Subjects</option>
+            <option value="Mathematics" class="py-1">Mathematics</option>
+            <option value="Physics" class="py-1">Physics</option>
+            <option value="Chemistry" class="py-1">Chemistry</option>
+          </select>
+
+          <!-- Filter Buttons -->
+          <div class="flex flex-wrap gap-2">
+            <!-- Subject Filters -->
+            <div class="flex gap-2">
+              <button
+                @click="selectedSubject = 'Mathematics'"
+                :class="{'bg-blue-500 text-white': selectedSubject === 'Mathematics', 'bg-gray-200 text-gray-700': selectedSubject !== 'Mathematics'}"
+                class="px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-blue-600 hover:text-white"
+              >
+                Math
+              </button>
+              <button
+                @click="selectedSubject = 'Physics'"
+                :class="{'bg-blue-500 text-white': selectedSubject === 'Physics', 'bg-gray-200 text-gray-700': selectedSubject !== 'Physics'}"
+                class="px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-blue-600 hover:text-white"
+              >
+                Physics
+              </button>
+              <button
+                @click="selectedSubject = 'Chemistry'"
+                :class="{'bg-blue-500 text-white': selectedSubject === 'Chemistry', 'bg-gray-200 text-gray-700': selectedSubject !== 'Chemistry'}"
+                class="px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-blue-600 hover:text-white"
+              >
+                Chemistry
+              </button>
+              <button
+                @click="selectedSubject = 'all'"
+                :class="{'bg-blue-500 text-white': selectedSubject === 'all', 'bg-gray-200 text-gray-700': selectedSubject !== 'all'}"
+                class="px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-blue-600 hover:text-white"
+              >
+                All
+              </button>
+            </div>
+
+            <!-- Rating Filter -->
+            <select
+              x-model="selectedRating"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700 font-medium cursor-pointer hover:border-blue-400 transition-colors duration-200"
+            >
+              <option value="all">All Ratings</option>
+              <option value="4.5">4.5+ Stars</option>
+              <option value="4.0">4.0+ Stars</option>
+              <option value="3.5">3.5+ Stars</option>
+            </select>
+
+            <!-- Location Filter -->
+            <select
+              x-model="selectedLocation"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700 font-medium cursor-pointer hover:border-blue-400 transition-colors duration-200"
+            >
+              <option value="all">All Locations</option>
+              <option value="delhi">Delhi</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="bangalore">Bangalore</option>
+              <option value="hyderabad">Hyderabad</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <!-- Teacher Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Teacher Card -->
+        <template x-for="teacher in filteredTeachers()" :key="teacher.name">
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
+            <div class="p-6">
+              <!-- Teacher Header -->
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center mr-4"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    fill="currentColor"
+                    class="bi bi-person-workspace text-gray-500"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"
+                    />
+                    <path
+                      d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h2
+                    class="text-xl font-semibold text-gray-800"
+                    x-text="teacher.name"
+                  ></h2>
+                  <p class="text-blue-600" x-text="teacher.subject"></p>
+                </div>
+              </div>
+
+              <!-- Teacher Details -->
+              <div class="space-y-2 text-gray-600">
+                <p class="flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span x-text="'Experience: ' + teacher.experience"></span>
+                </p>
+                <p class="flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  <span x-text="teacher.education"></span>
+                </p>
+                <p class="flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    ></path>
+                  </svg>
+                  <span
+                    x-text="'Specialization: ' + teacher.specialization"
+                  ></span>
+                </p>
+                <p class="flex items-center">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                  </svg>
+                  <span x-text="teacher.location"></span>
+                </p>
+              </div>
+
+              <!-- Stats -->
+              <div
+                class="mt-4 flex justify-between items-center pt-4 border-t border-gray-200"
+              >
+                <div class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-yellow-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                    ></path>
+                  </svg>
+                  <span
+                    class="ml-1 text-gray-600"
+                    x-text="teacher.rating + '/5.0'"
+                  ></span>
+                </div>
+                <div class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                    ></path>
+                  </svg>
+                  <span
+                    class="ml-1 text-gray-600"
+                    x-text="teacher.students + ' students'"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+      <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h4 class="text-lg font-bold mb-4">EduConnect</h4>
+            <p class="text-gray-400">
+              Connecting great teachers with great schools.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">For Teachers</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white">Create Profile</a></li>
+              <li><a href="#" class="hover:text-white">Search Jobs</a></li>
+              <li><a href="#" class="hover:text-white">Resources</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">For Schools</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white">Post a Job</a></li>
+              <li><a href="#" class="hover:text-white">Search Teachers</a></li>
+              <li><a href="#" class="hover:text-white">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Contact</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>support@educonnect.com</li>
+              <li>1-800-EDU-CONN</li>
+              <li>Mon-Fri 9AM-5PM EST</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Copyright Section -->
+        <div class="border-t border-gray-700 mt-8 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-400 text-sm">
+              © 2024 EduConnect. All rights reserved.
+            </div>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" class="text-gray-400 hover:text-white"
+                >Privacy Policy</a
+              >
+              <a href="#" class="text-gray-400 hover:text-white"
+                >Terms of Service</a
+              >
+              <a href="#" class="text-gray-400 hover:text-white"
+                >Cookie Policy</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

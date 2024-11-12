@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teaching Jobs Board</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="text-xl font-bold">SeekShak.in</div>
+          <div class="space-x-6">
+            <a href="#" class="hover:text-blue-200">For Teachers</a>
+            <a href="#" class="hover:text-blue-200">For Schools</a>
+            <a
+              href="#"
+              class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50"
+              >Sign In</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Job Listings Data -->
+    <script>
+      const jobListings = [
+        {
+          id: 1,
+          schoolName: "Greenwood Elementary",
+          position: "Mathematics Teacher",
+          location: "Mumbai, Maharashtra",
+          type: "Full-time",
+          grade: "Elementary",
+          subject: "Mathematics",
+          salary: "₹4,00,000 - ₹6,00,000",
+          description:
+            "Seeking an experienced mathematics teacher passionate about elementary education. Must have strong classroom management skills and ability to make math engaging for young learners.",
+          requirements: [
+            "B.Ed with Mathematics specialization",
+            "3+ years teaching experience",
+            "Strong communication skills",
+            "Experience with inquiry-based learning",
+          ],
+          posted: "2024-01-15",
+        },
+        {
+          id: 2,
+          schoolName: "Delhi Public School",
+          position: "Science Teacher",
+          location: "Delhi, NCR",
+          type: "Full-time",
+          grade: "Middle School",
+          subject: "Science",
+          salary: "₹5,00,000 - ₹7,00,000",
+          description:
+            "Looking for an enthusiastic science teacher to join our middle school team. Focus on hands-on learning and laboratory activities.",
+          requirements: [
+            "M.Sc in relevant field",
+            "B.Ed required",
+            "Lab management experience",
+            "Technology integration skills",
+          ],
+          posted: "2024-01-18",
+        },
+        {
+          id: 3,
+          schoolName: "International School of Excellence",
+          position: "English Literature Teacher",
+          location: "Bangalore, Karnataka",
+          type: "Full-time",
+          grade: "High School",
+          subject: "English",
+          salary: "₹6,00,000 - ₹8,00,000",
+          description:
+            "Seeking an experienced English teacher for IB curriculum. Strong background in literature and creative writing instruction required.",
+          requirements: [
+            "Masters in English Literature",
+            "IB teaching experience preferred",
+            "Strong analytical skills",
+            "Experience with student publications",
+          ],
+          posted: "2024-01-20",
+        },
+        {
+          id: 4,
+          schoolName: "Modern Academy",
+          position: "Art Teacher",
+          location: "Pune, Maharashtra",
+          type: "Part-time",
+          grade: "Elementary",
+          subject: "Art",
+          salary: "₹3,00,000 - ₹4,00,000",
+          description:
+            "Creative art teacher needed for elementary school program. Focus on various mediums and art appreciation.",
+          requirements: [
+            "BFA/MFA preferred",
+            "Teaching certification",
+            "Portfolio required",
+            "Experience with young learners",
+          ],
+          posted: "2024-01-22",
+        },
+        {
+          id: 6,
+          schoolName: "Global Minds Academy",
+          position: "Mathematics Teacher",
+          location: "Mumbai, Maharashtra",
+          type: "Full-time",
+          grade: "High School",
+          subject: "Mathematics",
+          salary: "₹7,00,000 - ₹9,00,000",
+          description:
+            "Looking for an experienced mathematics teacher for CBSE curriculum. Strong foundation in calculus and statistics required.",
+          requirements: [
+            "M.Sc in Mathematics",
+            "B.Ed required",
+            "5+ years teaching experience",
+            "Experience with competitive exam preparation",
+          ],
+          posted: "2024-01-26",
+        },
+        {
+          id: 7,
+          schoolName: "Valley View International",
+          position: "Physics Teacher",
+          location: "Hyderabad, Telangana",
+          type: "Full-time",
+          grade: "High School",
+          subject: "Science",
+          salary: "₹6,50,000 - ₹8,50,000",
+          description:
+            "Seeking physics teacher with strong practical and theoretical knowledge. Must be able to conduct engaging laboratory sessions.",
+          requirements: [
+            "M.Sc in Physics",
+            "B.Ed required",
+            "Lab management experience",
+            "Technology integration skills",
+          ],
+          posted: "2024-01-27",
+        },
+        {
+          id: 8,
+          schoolName: "Creative Minds School",
+          position: "Elementary Art Teacher",
+          location: "Kolkata, West Bengal",
+          type: "Part-time",
+          grade: "Elementary",
+          subject: "Art",
+          salary: "₹2,50,000 - ₹3,50,000",
+          description:
+            "Seeking passionate art teacher for primary classes. Focus on developing creativity and basic art skills.",
+          requirements: [
+            "BFA/Fine Arts degree",
+            "Experience with young learners",
+            "Strong classroom management",
+            "Portfolio required",
+          ],
+          posted: "2024-01-28",
+        },
+        {
+          id: 9,
+          schoolName: "New Age Public School",
+          position: "English Language Teacher",
+          location: "Ahmedabad, Gujarat",
+          type: "Full-time",
+          grade: "Middle School",
+          subject: "English",
+          salary: "₹4,50,000 - ₹6,00,000",
+          description:
+            "English teacher needed for grades 6-8. Focus on grammar, composition, and communication skills.",
+          requirements: [
+            "MA in English",
+            "B.Ed required",
+            "ESL teaching experience preferred",
+            "Strong communication skills",
+          ],
+          posted: "2024-01-29",
+        },
+        {
+          id: 10,
+          schoolName: "Future Leaders Academy",
+          position: "Computer Science Teacher",
+          location: "Chandigarh, Punjab",
+          type: "Contract",
+          grade: "High School",
+          subject: "Science",
+          salary: "₹5,50,000 - ₹7,00,000",
+          description:
+            "Seeking CS teacher with programming expertise. Will teach basic to advanced programming concepts.",
+          requirements: [
+            "B.Tech/M.Tech in Computer Science",
+            "Teaching certification",
+            "Programming language proficiency",
+            "Project-based learning experience",
+          ],
+          posted: "2024-01-30",
+        },
+        {
+          id: 11,
+          schoolName: "Sunshine Elementary",
+          position: "Primary School Teacher",
+          location: "Jaipur, Rajasthan",
+          type: "Full-time",
+          grade: "Elementary",
+          subject: "Mathematics",
+          salary: "₹3,50,000 - ₹5,00,000",
+          description:
+            "Looking for a dedicated primary school teacher with expertise in elementary mathematics instruction.",
+          requirements: [
+            "B.Ed required",
+            "3+ years primary teaching experience",
+            "Strong foundation in mathematics",
+            "Activity-based teaching skills",
+          ],
+          posted: "2024-01-31",
+        },
+        {
+          id: 5,
+          schoolName: "Heritage School",
+          position: "History Teacher",
+          location: "Chennai, Tamil Nadu",
+          type: "Contract",
+          grade: "High School",
+          subject: "History",
+          salary: "₹5,50,000 - ₹7,50,000",
+          description:
+            "Seeking history teacher with strong background in Indian and World History. Must be able to engage students through interactive teaching methods.",
+          requirements: [
+            "Masters in History",
+            "B.Ed required",
+            "Research experience preferred",
+            "Digital teaching tools proficiency",
+          ],
+          posted: "2024-01-25",
+        },
+      ];
+
+      // Filter states
+      let activeFilters = {
+        subject: [],
+        grade: [],
+        type: [],
+      };
+
+      // Toggle filter selection
+      function toggleFilter(button, filterType) {
+        const filterValue = button.getAttribute("data-filter");
+        button.classList.toggle("bg-blue-500");
+        button.classList.toggle("text-white");
+
+        if (activeFilters[filterType].includes(filterValue)) {
+          activeFilters[filterType] = activeFilters[filterType].filter(
+            (f) => f !== filterValue
+          );
+        } else {
+          activeFilters[filterType].push(filterValue);
+        }
+
+        applyFilters();
+      }
+
+      // Clear all filters
+      function clearFilters() {
+        activeFilters = {
+          subject: [],
+          grade: [],
+          type: [],
+        };
+
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.classList.remove("bg-blue-500", "text-white");
+          btn.classList.add("text-blue-500");
+        });
+
+        document.getElementById("searchInput").value = "";
+        renderJobs(jobListings);
+      }
+
+      // Apply filters and search
+      function applyFilters() {
+        const searchTerm = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+
+        let filteredJobs = jobListings.filter((job) => {
+          const matchesSearch =
+            !searchTerm ||
+            job.position.toLowerCase().includes(searchTerm) ||
+            job.schoolName.toLowerCase().includes(searchTerm) ||
+            job.location.toLowerCase().includes(searchTerm);
+
+          const matchesSubject =
+            activeFilters.subject.length === 0 ||
+            activeFilters.subject.includes(job.subject);
+
+          const matchesGrade =
+            activeFilters.grade.length === 0 ||
+            activeFilters.grade.includes(job.grade);
+
+          const matchesType =
+            activeFilters.type.length === 0 ||
+            activeFilters.type.includes(job.type);
+
+          return matchesSearch && matchesSubject && matchesGrade && matchesType;
+        });
+
+        renderJobs(filteredJobs);
+      }
+
+      // Render job listings
+      function renderJobs(jobs) {
+        const container = document.getElementById("jobListings");
+        container.innerHTML = "";
+
+        if (jobs.length === 0) {
+          container.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <p class="text-gray-500 text-lg">No matching jobs found. Try adjusting your filters.</p>
+                    </div>
+                `;
+          return;
+        }
+
+        jobs.forEach((job) => {
+          const jobCard = `
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition-shadow">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-start gap-4">
+                                <i class="bi bi-building text-3xl text-blue-600"></i>
+                                <div>
+                                    <h2 class="text-xl font-bold text-gray-800">${
+                                      job.position
+                                    }</h2>
+                                    <h3 class="text-lg text-blue-600">${
+                                      job.schoolName
+                                    }</h3>
+                                    <p class="text-gray-600 mt-2">📍 ${
+                                      job.location
+                                    }</p>
+                                </div>
+                            </div>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">${
+                              job.type
+                            }</span>
+                        </div>
+                        
+                        <p class="text-gray-600 mt-4">${job.description}</p>
+                        
+                        <div class="mt-4">
+                            <p class="text-gray-700 font-semibold">Requirements:</p>
+                            <ul class="list-disc list-inside text-gray-600 mt-2">
+                                ${job.requirements
+                                  .map((req) => `<li>${req}</li>`)
+                                  .join("")}
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-6 flex justify-between items-center">
+                            <div class="text-gray-700">
+                                <span class="font-semibold">Salary:</span> ${
+                                  job.salary
+                                }
+                            </div>
+                            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                Apply Now
+                            </button>
+                        </div>
+                        
+                        <div class="mt-4 text-sm text-gray-500">
+                            Posted on: ${new Date(
+                              job.posted
+                            ).toLocaleDateString("en-IN")}
+                        </div>
+                    </div>
+                `;
+          container.innerHTML += jobCard;
+        });
+      }
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        renderJobs(jobListings);
+
+        // Add search input event listener
+        document.getElementById("searchInput").addEventListener("input", () => {
+          applyFilters();
+        });
+      });
+    </script>
+
+    <main class="container mx-auto px-4 py-8">
+      <!-- Search and Filters Section -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Search Box -->
+          <div class="col-span-1 md:col-span-3">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search for teaching jobs..."
+              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Filters -->
+          <div>
+            <p class="text-gray-600 font-medium mb-2">Subject Area</p>
+            <div class="flex flex-wrap gap-2">
+              <button
+                onclick="toggleFilter(this, 'subject')"
+                data-filter="Mathematics"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Mathematics
+              </button>
+              <button
+                onclick="toggleFilter(this, 'subject')"
+                data-filter="Science"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Science
+              </button>
+              <button
+                onclick="toggleFilter(this, 'subject')"
+                data-filter="English"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                English
+              </button>
+              <button
+                onclick="toggleFilter(this, 'subject')"
+                data-filter="History"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                History
+              </button>
+              <button
+                onclick="toggleFilter(this, 'subject')"
+                data-filter="Art"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Art
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-gray-600 font-medium mb-2">Grade Level</p>
+            <div class="flex flex-wrap gap-2">
+              <button
+                onclick="toggleFilter(this, 'grade')"
+                data-filter="Elementary"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Elementary
+              </button>
+              <button
+                onclick="toggleFilter(this, 'grade')"
+                data-filter="Middle School"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Middle School
+              </button>
+              <button
+                onclick="toggleFilter(this, 'grade')"
+                data-filter="High School"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                High School
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-gray-600 font-medium mb-2">Job Type</p>
+            <div class="flex flex-wrap gap-2">
+              <button
+                onclick="toggleFilter(this, 'type')"
+                data-filter="Full-time"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Full-time
+              </button>
+              <button
+                onclick="toggleFilter(this, 'type')"
+                data-filter="Part-time"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Part-time
+              </button>
+              <button
+                onclick="toggleFilter(this, 'type')"
+                data-filter="Contract"
+                class="filter-btn px-3 py-1 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50 transition-colors"
+              >
+                Contract
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <button
+            onclick="applyFilters()"
+            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          >
+            Search Jobs
+          </button>
+          <button
+            onclick="clearFilters()"
+            class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+          >
+            Clear Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Job Listings Grid -->
+      <div id="jobListings" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Job listings will be dynamically inserted here -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+      <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h4 class="text-lg font-bold mb-4">EduConnect</h4>
+            <p class="text-gray-400">
+              Connecting great teachers with great schools.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">For Teachers</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white">Create Profile</a></li>
+              <li><a href="#" class="hover:text-white">Search Jobs</a></li>
+              <li><a href="#" class="hover:text-white">Resources</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">For Schools</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white">Post a Job</a></li>
+              <li><a href="#" class="hover:text-white">Search Teachers</a></li>
+              <li><a href="#" class="hover:text-white">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Contact</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>support@educonnect.com</li>
+              <li>1-800-EDU-CONN</li>
+              <li>Mon-Fri 9AM-5PM EST</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Copyright Section -->
+        <div class="border-t border-gray-700 mt-8 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-400 text-sm">
+              © 2024 EduConnect. All rights reserved.
+            </div>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" class="text-gray-400 hover:text-white"
+                >Privacy Policy</a
+              >
+              <a href="#" class="text-gray-400 hover:text-white"
+                >Terms of Service</a
+              >
+              <a href="#" class="text-gray-400 hover:text-white"
+                >Cookie Policy</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
